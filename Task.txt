@@ -1,0 +1,60 @@
+1)
+echo -e "собаки\nкошки\nхомяки" > pets
+echo -e "Лошади\nверблюды\nослы" > Pack_animals
+cat pets Pack_animals > friends.txt
+cat friends.txt
+mv friends.txt animals
+2)
+mkdir animals_directory
+mv animals animals_directory/
+3)
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
+sudo apt-get update
+sudo apt-get install mysql-server
+4)
+sudo dpkg -i example-package.deb
+sudo dpkg -r example-package
+
+7)
+CREATE DATABASE animals;
+8)
+USE animals;
+
+CREATE TABLE allAnimals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    kind VARCHAR(50)
+);
+
+CREATE TABLE pets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    animalId INT,
+    name VARCHAR(50),
+    commands VARCHAR(255),
+    birthday DATE,
+    FOREIGN KEY (animalId) REFERENCES allAnimals(id)
+);
+
+CREATE TABLE packAnimals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    animalId INT,
+    name VARCHAR(50),
+    commands VARCHAR(255),
+    birthday DATE,
+    FOREIGN KEY (animalId) REFERENCES allAnimals(id)
+);
+9)
+INSERT INTO allAnimals (kind) VALUES ('Собаки'), ('Кошки'), ('Хомяки'), ('Лошади'), ('Верблюды'), ('Ослы');
+
+INSERT INTO pets (animalId, name, commands, birthday)
+VALUES
+(1, 'Шарик', 'сидеть, лежать', '2021-05-01'),
+(2, 'Мурка', 'идти ко мне', '2020-03-15'),
+(3, 'Хома', 'крутить колесо', '2022-01-20');
+
+INSERT INTO packAnimals (animalId, name, commands, birthday)
+VALUES
+(4, 'Буцефал', 'вперёд, назад', '2019-07-21'),
+(5, 'Василий', 'не плюйся', '2018-11-11'),
+(6, 'Иа', 'нести груз', '2020-09-13');
+10)
