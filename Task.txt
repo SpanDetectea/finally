@@ -59,3 +59,23 @@ VALUES
 (6, 'Иа', 'нести груз', '2020-09-13');
 10)
 DELETE FROM packAnimals WHERE animalId = 5;
+
+CREATE TABLE horses_donkeys AS
+SELECT * FROM packAnimals WHERE animalId IN (4, 6);
+
+11)
+CREATE TABLE youngsAnimals AS
+SELECT *, TIMESTAMPDIFF(MONTH, birthday, CURDATE()) AS numberOfMonths
+FROM (
+    SELECT * FROM pets
+    UNION
+    SELECT * FROM packAnimals
+) AS YoungsAnimals
+WHERE TIMESTAMPDIFF(YEAR, birthday, CURDATE()) BETWEEN 1 AND 3;
+
+12)
+CREATE TABLE generalTable AS
+SELECT 'pets' AS Category, * FROM pets
+UNION
+SELECT 'horses_donkeys' AS Category, * FROM horses_donkeys;
+13)
